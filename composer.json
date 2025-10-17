@@ -16,10 +16,16 @@
     "require": {
         "php": "^8.3",
         "silverstripe/framework": "^6",
-        "silverstripe/silverstripe-forager": "^1.0",
+        "silverstripe/silverstripe-forager": "dev-silverstripe-6",
         "elastic/enterprise-search": "^8.6",
         "guzzlehttp/guzzle": "^7"
     },
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/dnadesign/silverstripe-forager.git"
+        }
+    ],
     "require-dev": {
         "silverstripe/recipe-testing": "^3",
         "tractorcow/silverstripe-fluent": "^7",
