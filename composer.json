@@ -16,7 +16,7 @@
     "require": {
         "php": "^8.3",
         "silverstripe/framework": "^6",
-        "silverstripe/silverstripe-search-service": "^3",
+        "silverstripe/silverstripe-forager": "^1.0",
         "elastic/enterprise-search": "^8.6",
         "guzzlehttp/guzzle": "^7"
     },
