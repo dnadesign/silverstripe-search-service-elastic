@@ -2,34 +2,31 @@
 
 namespace SilverStripe\SearchServiceElastic\Service;
 
-use Elastic\EnterpriseSearch\AppSearch\Request\CreateEngine;
-use Elastic\EnterpriseSearch\AppSearch\Request\DeleteDocuments;
-use Elastic\EnterpriseSearch\AppSearch\Request\GetDocuments;
-use Elastic\EnterpriseSearch\AppSearch\Request\GetSchema;
-use Elastic\EnterpriseSearch\AppSearch\Request\IndexDocuments;
-use Elastic\EnterpriseSearch\AppSearch\Request\ListDocuments;
-use Elastic\EnterpriseSearch\AppSearch\Request\ListEngines;
-use Elastic\EnterpriseSearch\AppSearch\Request\PutSchema;
-use Elastic\EnterpriseSearch\AppSearch\Schema\Engine;
-use Elastic\EnterpriseSearch\AppSearch\Schema\SchemaUpdateRequest;
-use Elastic\EnterpriseSearch\Client;
-use Exception;
-use InvalidArgumentException;
-use Psr\Container\NotFoundExceptionInterface;
 use Psr\Log\LoggerInterface;
-use SilverStripe\Core\Config\Configurable;
+use InvalidArgumentException;
 use SilverStripe\Core\Environment;
-use SilverStripe\Core\Injector\Injectable;
+use Elastic\EnterpriseSearch\Client;
 use SilverStripe\Core\Injector\Injector;
-use SilverStripe\SearchService\Exception\IndexConfigurationException;
-use SilverStripe\SearchService\Exception\IndexingServiceException;
-use SilverStripe\SearchService\Interfaces\BatchDocumentRemovalInterface;
-use SilverStripe\SearchService\Interfaces\DocumentInterface;
-use SilverStripe\SearchService\Interfaces\IndexingInterface;
-use SilverStripe\SearchService\Schema\Field;
-use SilverStripe\SearchService\Service\DocumentBuilder;
-use SilverStripe\SearchService\Service\IndexConfiguration;
-use SilverStripe\SearchService\Service\Traits\ConfigurationAware;
+use SilverStripe\Core\Config\Configurable;
+use SilverStripe\Core\Injector\Injectable;
+use SilverStripe\Forager\Service\DocumentBuilder;
+use SilverStripe\Forager\Service\IndexConfiguration;
+use Elastic\EnterpriseSearch\AppSearch\Schema\Engine;
+use SilverStripe\Forager\Interfaces\DocumentInterface;
+use SilverStripe\Forager\Interfaces\IndexingInterface;
+use Elastic\EnterpriseSearch\AppSearch\Request\GetSchema;
+use Elastic\EnterpriseSearch\AppSearch\Request\PutSchema;
+use Elastic\EnterpriseSearch\AppSearch\Request\ListEngines;
+use SilverStripe\Forager\Service\Traits\ConfigurationAware;
+use Elastic\EnterpriseSearch\AppSearch\Request\CreateEngine;
+use Elastic\EnterpriseSearch\AppSearch\Request\GetDocuments;
+use SilverStripe\Forager\Exception\IndexingServiceException;
+use Elastic\EnterpriseSearch\AppSearch\Request\ListDocuments;
+use Elastic\EnterpriseSearch\AppSearch\Request\IndexDocuments;
+use Elastic\EnterpriseSearch\AppSearch\Request\DeleteDocuments;
+use SilverStripe\Forager\Exception\IndexConfigurationException;
+use Elastic\EnterpriseSearch\AppSearch\Schema\SchemaUpdateRequest;
+use SilverStripe\Forager\Interfaces\BatchDocumentRemovalInterface;
 
 class EnterpriseSearchService implements IndexingInterface, BatchDocumentRemovalInterface
 {
